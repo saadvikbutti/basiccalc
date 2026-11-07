@@ -109,3 +109,22 @@ const equalsButton = document.querySelector(".equals")
         secondNumber = "";
         operator = "";
     })
+
+    const decimalPoint = document.querySelector(".point")
+            decimalPoint.addEventListener("click", function(){
+
+            if(operator == ""){
+                
+               if (!firstNumber.includes(".")) {
+                    firstNumber += ".";
+                    currentNumber.textContent += ".";
+                }
+            }
+            
+            else{
+                if (!secondNumber.includes(".")) {
+                    secondNumber += ".";
+                    currentNumber.textContent += ".";
+                }
+            }
+        })
