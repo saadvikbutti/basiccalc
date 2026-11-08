@@ -80,7 +80,7 @@ const opFunction = document.querySelectorAll(".operator");
 opFunction.forEach(function(button){
     button.addEventListener("click", function(){
 
-        if (firstNumber = ""){
+        if (firstNumber == ""){
             return
         }
         // If a second number exists, calculate using the PREVIOUS operator first
