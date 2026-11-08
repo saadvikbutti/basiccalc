@@ -65,7 +65,7 @@ function calculate(){
 
         case "/":
             if(b === 0){
-                result = "You Dumb"
+                result = "Error"
                 break
             }
             result = a / b;
@@ -135,6 +135,15 @@ equalsButton.addEventListener("click", function(){
     if(firstNumber !== "" && secondNumber !== "" && operator !== ""){
 
         calculate();
+        if(result === "Error"){
+            currentNumber.textContent = "Error";
+            previousExpression.textContent = "";
+            firstNumber = "";
+            secondNumber = "";
+            operator = "";
+            result = "";
+            return;
+        }
 
         currentNumber.textContent = result;
         previousExpression.textContent = firstNumber + " " + operator + " " + secondNumber + " =";
