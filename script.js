@@ -45,27 +45,30 @@ const clearLastDigitButton = document.querySelector(".clear");
     })
 
 //reusable function
-function caluculate(){
-      
+function calculate(){
+    
+        let a = Number(firstNumber);
+        let b = Number(secondNumber);
+
     switch(operator){
             case "+":
-                result += a + b;
+                result = a + b;
                 break;
 
             case "-":
-                result += a - b;
+                result = a - b;
                 break;
 
             case "*":
-                result += a * b;
+                result = a * b;
                 break;
 
             case "/":
-                result += a / b;
+                result = a / b;
                 break;
 
             case "%":
-                result += a % b;
+                result = a % b;
                 break;
         }
 
@@ -108,19 +111,16 @@ const fnFunction = document.querySelectorAll(".number")
 //turning the strigs into numbers actually for the logic of operator to work for arithmetic operations
 const equalsButton = document.querySelector(".equals")
     equalsButton.addEventListener("click", function(){
-        let a = Number(firstNumber);
-        let b = Number(secondNumber);
-        let result = 0;
-        let mulDivResult = 1;
-      
-        caluculate();
+
+        calculate();
 
         currentNumber.textContent = result;
         previousExpression.textContent = firstNumber + " " + operator + " " + secondNumber + " =";
 
-        firstNumber = "";
+        firstNumber = String(result);
         secondNumber = "";
         operator = "";
+        
     })
 
     const decimalPoint = document.querySelector(".point")
