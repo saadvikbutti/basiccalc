@@ -64,6 +64,10 @@ function calculate(){
             break;
 
         case "/":
+            if(b === 0){
+                result = "You Dumb"
+                break
+            }
             result = a / b;
             break;
 
@@ -166,4 +170,18 @@ decimalPoint.addEventListener("click", function(){
     }
 
 });
+
+//sign toggle logic
+const toggleSign = document.querySelector(".sign-toggle")
+toggleSign.addEventListener("click", function(){
+    if(operator == ""){
+        firstNumber = -firstNumber
+        currentNumber.textContent = String(firstNumber)
+    }
+
+    else{
+        secondNumber = -secondNumber
+        currentNumber.textContent = String(secondNumber)
+    }
+})
 
