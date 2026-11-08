@@ -3,7 +3,9 @@ const previousExpression = document.querySelector(".previous-expression");
 const currentNumber = document.querySelector(".current-number");
 
 currentNumber.textContent = "";
-previousExpression.textContent = "";//operator function logic
+previousExpression.textContent = "";
+
+//operator function logic
 let firstNumber = "";
 let secondNumber = "";
 let operator = "";
@@ -42,6 +44,32 @@ const clearLastDigitButton = document.querySelector(".clear");
         console.log("Current:", currentNumber.textContent);
     })
 
+//reusable function
+function caluculate(){
+      
+    switch(operator){
+            case "+":
+                result += a + b;
+                break;
+
+            case "-":
+                result += a - b;
+                break;
+
+            case "*":
+                result += a * b;
+                break;
+
+            case "/":
+                result += a / b;
+                break;
+
+            case "%":
+                result += a % b;
+                break;
+        }
+
+}
 
 const opFunction = document.querySelectorAll(".operator")
     opFunction.forEach(function(button){
@@ -49,8 +77,18 @@ const opFunction = document.querySelectorAll(".operator")
             operator = button.textContent;
             previousExpression.textContent = firstNumber + " " + operator;
             currentNumber.textContent = "";
+
+            if (secondNumber !== "") {
+                // Calculate the pending expression
+                calculate();
+                firstNumber = String(result)
+                secondNumber = ""
+                operator = button.textContent
+                previousExpression.textContent = firstNumber + " " + operator;
+            }
         })
     })
+
 
 const fnFunction = document.querySelectorAll(".number")
     fnFunction.forEach(function(button){
@@ -74,33 +112,8 @@ const equalsButton = document.querySelector(".equals")
         let b = Number(secondNumber);
         let result = 0;
         let mulDivResult = 1;
-
-        console.log("BEFORE EQUALS");
-        console.log("First:", firstNumber);
-        console.log("Second:", secondNumber);
-        console.log("Operator:", operator);
-
-        switch(operator){
-            case "+":
-                result += a + b;
-                break;
-
-            case "-":
-                result += a - b;
-                break;
-
-            case "*":
-                result += a * b;
-                break;
-
-            case "/":
-                result += a / b;
-                break;
-
-            case "%":
-                result += a % b;
-                break;
-        }
+      
+        caluculate();
 
         currentNumber.textContent = result;
         previousExpression.textContent = firstNumber + " " + operator + " " + secondNumber + " =";
