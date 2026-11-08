@@ -172,16 +172,16 @@ decimalPoint.addEventListener("click", function(){
 });
 
 //sign toggle logic
-const toggleSign = document.querySelector(".sign-toggle")
+const toggleSign = document.querySelector(".sign-toggle");
 toggleSign.addEventListener("click", function(){
     if(operator == ""){
-        firstNumber = -firstNumber
-        currentNumber.textContent = String(firstNumber)
+        if(firstNumber === "") return;
+        firstNumber = String(-Number(firstNumber));
+        currentNumber.textContent = firstNumber;
     }
-
     else{
-        secondNumber = -secondNumber
-        currentNumber.textContent = String(secondNumber)
+        if(secondNumber === "") return;
+        secondNumber = String(-Number(secondNumber));
+        currentNumber.textContent = secondNumber;
     }
-})
-
+});
